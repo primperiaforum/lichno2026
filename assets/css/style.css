@@ -122,6 +122,10 @@ a{color:inherit}
   border-radius:calc(30 * var(--u));
   box-shadow:0 0 calc(20 * var(--u)) 0 rgba(255,255,255,.5);
 }
+/* Подложка уходит за фотографии спикеров, текст и кнопки остаются поверх. */
+.hero .el{z-index:3}
+.hero .faces img{z-index:2}
+.hero .panel{z-index:1}
 .hero .seo{color:#000b21;font-size:calc(12 * var(--u));line-height:1.3}
 
 /* ---------- 2. Преимущества ---------- */
@@ -155,6 +159,8 @@ a{color:inherit}
 .tg-icon svg{width:100%;height:100%;display:block;fill:#fff}
 
 /* ---------- 5. Программа ---------- */
+/* Свечение карточки выходит за границы секции — иначе оно срезается сверху. */
+.prog-section{overflow:visible}
 .prog-card{
   border-radius:calc(50 * var(--u));
   background:var(--bg-img) center/cover no-repeat;
@@ -174,6 +180,9 @@ a{color:inherit}
   box-shadow:0 0 calc(20 * var(--u)) 0 rgba(255,255,255,.4);
 }
 .form-card .dark{color:#031827}
+/* Снимаем браузерные отступы h2/p, чтобы координаты в блоке формы
+   совпадали с фактической выключкой текста относительно полей. */
+.form-card-content .el{margin:0}
 .reg-form{display:flex;flex-direction:column;gap:calc(16 * var(--u))}
 .reg-form input[type=text],
 .reg-form input[type=email],
@@ -206,7 +215,7 @@ a{color:inherit}
 .gallery{height:calc(400 * var(--u));overflow:hidden}
 .gal-row{height:calc(200 * var(--u));overflow:hidden}
 /* Плитки продублированы, поэтому сдвиг на -50% зацикливается без стыка. */
-.gal-track{display:flex;width:max-content;animation:gal-left 90s linear infinite}
+.gal-track{display:flex;width:max-content;animation:gal-left 135s linear infinite}
 .gal-row--rtl .gal-track{animation-name:gal-right}
 @keyframes gal-left{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @keyframes gal-right{from{transform:translateX(-50%)}to{transform:translateX(0)}}
